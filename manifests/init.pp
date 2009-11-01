@@ -14,8 +14,8 @@ class sudo::base {
       file{'/etc/sudoers':
         source => [ "puppet://$server/files/sudo/sudoers/${fqdn}/sudoers",
                     "puppet://$server/files/sudo/sudoers/sudoers",
-                    "puppet://$server/sudo/sudoers/${operatingsystem}/sudoers",
-                    "puppet://$server/sudo/sudoers/sudoers" ],
+                    "puppet://$server/modules/sudo/sudoers/${operatingsystem}/sudoers",
+                    "puppet://$server/modules/sudo/sudoers/sudoers" ],
         owner => root, group => 0, mode => 0440;
       }
     }
