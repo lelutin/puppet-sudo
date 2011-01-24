@@ -5,6 +5,7 @@
 class sudo {
     case $kernel {
         linux: { include sudo::linux }
+        freebsd: { include sudo::freebsd }
         default: { include sudo::base }
     }
 }
