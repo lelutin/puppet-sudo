@@ -3,7 +3,7 @@
 # GPLv3
 
 class sudo(
-  $deploy_sudoers = hiera('deploy_sudoers',false)
+  $deploy_sudoers = false
 ) {
   case $::kernel {
     linux: { include sudo::linux }
