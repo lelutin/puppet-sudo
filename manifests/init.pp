@@ -18,7 +18,7 @@ class koumbit::sudo {
     }
 }
 
-define koumbit::sudo::extra-acces($user, $access) {
+define koumbit::sudo::extra-access($user, $access) {
      file { "/etc/sudoers.d/$user":
        ensure  => 'present',
        owner   => root,
