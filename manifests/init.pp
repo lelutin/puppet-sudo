@@ -17,3 +17,6 @@ class sudo {
         }
     }
 }
+
+# backwards compat
+class koumbit::sudo inherits sudo {}
