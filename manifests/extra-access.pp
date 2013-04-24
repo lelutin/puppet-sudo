@@ -1,4 +1,4 @@
-define sudo::extra-access($ensure = 'present', $user, $access) {
+define sudo::extra-access($ensure = 'present', $user, $access = 'ALL=(ALL) ALL') {
      file { "/etc/sudoers.d/01-user_access-$title":
        ensure  => 'present',
        owner   => root,
