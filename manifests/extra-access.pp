@@ -2,6 +2,7 @@ define sudo::extra-access($ensure = 'present', $user = undef, $access = 'ALL=(AL
      if $user == undef {
        $user = $name
      }
+     # there shouldn't be a dot in those filenames!
      file { "/etc/sudoers.d/01-user_access-${name}":
        ensure  => 'present',
        owner   => root,
