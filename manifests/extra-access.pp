@@ -5,7 +5,7 @@ define sudo::extra-access($ensure = 'present', $user = undef, $access = 'ALL=(AL
      file { "/etc/sudoers.d/01-user_access-${name}":
        ensure  => 'present',
        owner   => root,
-       group   => admin,
+       group   => root,
        mode    => 640,
        content => "# THIS FILE IS MANAGED BY PUPPET !\n\n${user}        ${access}\n",
      }
