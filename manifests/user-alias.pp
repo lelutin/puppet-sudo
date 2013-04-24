@@ -1,5 +1,6 @@
 define sudo::user-alias ($ensure = 'present', $members) {
-     file { "/etc/sudoers.d/00-user_alias-$title":
+    # this is 00-prefixed so that it's defined before the other definitions
+    file { "/etc/sudoers.d/00-user_alias-$title":
        ensure  => $ensure,
        owner   => root,
        group   => root,
