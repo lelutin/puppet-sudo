@@ -1,11 +1,10 @@
-define sudo::user-alias ($ensure = 'present', $groupname, $members) {
-     file { "/etc/sudoers.d/00-user_alias-$title":
-       ensure  => $ensure,
+define koumbit::sudo::extra-access($user, $access) {
+     file { "/etc/sudoers.d/$user":
+       ensure  => 'present',
        owner   => root,
-       group   => root,
-       mode    => 440,
-       content => "# THIS FILE IS MANAGED BY PUPPET !\n\nUser_Alias $groupname = $members\n",
+       group   => admin,
+       mode    => 640,
+       content => "$user	$access",
+       notify  => Service[apache2]
      }
 }
-
-
