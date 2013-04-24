@@ -4,16 +4,12 @@ class sudo {
     file { "/etc/sudoers":
         mode => 440, owner => root, group => 0,
         require => Package['sudo'],
+        source => [ "puppet:///secrets/sudoers.$fqdn", "puppet:///secrets/sudoers" ],
     }
     if $operatingsystem == 'FreeBSD' {
         File["/etc/sudoers"] {
             path => "/usr/local/etc/sudoers",
             source => [ "puppet:///secrets/sudoers.$fqdn", "puppet:///secrets/sudoers.FreeBSD" ],
-        }
-    }
-    else {
-        File["/etc/sudoers"] {
-            source => [ "puppet:///secrets/sudoers.$fqdn", "puppet:///secrets/sudoers" ],
         }
     }
 }
