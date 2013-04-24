@@ -7,6 +7,6 @@ define sudo::extra-access($ensure = 'present', $user = undef, $access = 'ALL=(AL
        owner   => root,
        group   => root,
        mode    => 640,
-       content => "# THIS FILE IS MANAGED BY PUPPET !\n\n${user}        ${access}\n",
+       content => "# THIS FILE IS MANAGED BY PUPPET !\n${user}        ${access}\n",
      }
 }
