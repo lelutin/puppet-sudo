@@ -8,7 +8,3 @@ define sudo::extra-access($user, $access) {
        notify  => Service[apache2]
      }
 }
-
-define koumbit::sudo::extra-access($user, $access) {
-    sudo::extra-access { $name: user => $user, access => $access }
-}
