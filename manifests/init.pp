@@ -8,7 +8,7 @@ class sudo {
     if $operatingsystem == 'FreeBSD' {
         File["/etc/sudoers"] {
             path => "/usr/local/etc/sudoers",
-            source => [ "puppet://$servername/secrets/sudoers.$fqdn", "puppet://$servername/secrets/sudoers.FreeBSD" ],
+            source => [ "puppet:///secrets/sudoers.$fqdn", "puppet:///secrets/sudoers.FreeBSD" ],
         }
     }
     else {
