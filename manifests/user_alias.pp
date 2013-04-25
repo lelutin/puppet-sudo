@@ -1,4 +1,4 @@
-define sudo::user-alias (
+define sudo::user_alias (
   $members,
   $ensure = 'present'
 ) {
