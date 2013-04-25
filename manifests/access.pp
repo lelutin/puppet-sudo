@@ -1,4 +1,4 @@
-define sudo::extra-access($ensure = 'present', $user = undef, $access = 'ALL=(ALL) ALL') {
+define sudo::access($ensure = 'present', $user = undef, $access = 'ALL=(ALL) ALL') {
      if $user == undef {
        $user = $name
      }
