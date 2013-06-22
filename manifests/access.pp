@@ -3,7 +3,7 @@ define sudo::access (
   $user = undef,
   $access = 'ALL=(ALL) ALL'
 ) {
-  include sudo
+
   if $user == undef {
     $real_user = $name
   } else {
@@ -16,5 +16,6 @@ define sudo::access (
     group   => 0,
     mode    => '0440',
     content => "# THIS FILE IS MANAGED BY PUPPET !\n${real_user}        ${access}\n",
+    require => Class['sudo']
   }
 }
