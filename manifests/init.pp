@@ -7,13 +7,8 @@ class sudo(
   $path = $sudo::params::path,
   $dir = $sudo::params::dir
 ) inherits sudo::params {
-  case $::kernel {
-    # XXX: why don't we install the package everywhere?
-    linux,freebsd: {
-      package {'sudo':
-        ensure => installed,
-      }
-    }
+  package {'sudo':
+    ensure => installed,
   }
   if $sudo::deploy_sudoers {
     file {
