@@ -3,7 +3,7 @@
 # GPLv3
 
 class sudo(
-  $deploy_sudoers = $sudo::deploy_sudoers,
+  $deploy_sudoers = $sudo::params::deploy_sudoers,
   $path = $sudo::params::path,
   $dir = $sudo::params::dir
 ) inherits sudo::params {
