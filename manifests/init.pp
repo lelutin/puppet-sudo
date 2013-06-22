@@ -8,8 +8,28 @@ class sudo(
   $dir = $sudo::params::dir
 ) inherits sudo::params {
   case $::kernel {
-    linux: { include sudo::linux }
-    freebsd: { include sudo::freebsd }
-    default: { include sudo::base }
+    # XXX: why don't we install the package everywhere?
+    linux,freebsd: {
+      package {'sudo':
+        ensure => installed,
+      }
+    }
+  }
+  if $sudo::deploy_sudoers {
+    file {
+      $sudo::path:
+        source => [ "puppet:///modules/site_sudo/sudoers/${::fqdn}/sudoers",
+                    "puppet:///modules/site_sudo/sudoers/sudoers",
+                    "puppet:///modules/sudo/sudoers/${::operatingsystem}/sudoers",
+                    "puppet:///modules/sudo/sudoers/sudoers" ],
+        require => Package['sudo'],
+        owner => root, group => 0, mode => 0440;
+    }
+  }
+  file {
+    $sudo::dir:
+      ensure => directory,
+      require => Package['sudo'],
+      owner => root, group => 0, mode => 0550;
   }
 }
