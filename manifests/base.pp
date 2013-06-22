@@ -7,5 +7,9 @@ class sudo::base {
                     "puppet:///modules/sudo/sudoers/sudoers" ],
         owner => root, group => 0, mode => 0440;
       }
+      file { ${sudo::sudoersdir}:
+        ensure => directory,
+        owner => root, group => 0, mode => 0550;
+      }
     }
 }

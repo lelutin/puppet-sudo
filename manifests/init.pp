@@ -3,7 +3,8 @@
 # GPLv3
 
 class sudo(
-  $deploy_sudoers = false
+  $deploy_sudoers = false,
+  $sudoersdir = '/etc/sudoers.d',
 ) {
   case $::kernel {
     linux: { include sudo::linux }
