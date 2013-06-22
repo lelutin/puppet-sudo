@@ -4,7 +4,7 @@
 
 class sudo(
   $deploy_sudoers = false,
-  $sudoersdir = '/etc/sudoers.d'
+  $dir = '/etc/sudoers.d'
 ) {
   case $::kernel {
     linux: { include sudo::linux }

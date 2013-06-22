@@ -3,7 +3,7 @@ define sudo::user_alias (
   $ensure = 'present'
 ) {
   # this is 00-prefixed so that it's defined before the other definitions
-  file { "${sudo::sudoersdir}/etc/sudoers.d/00-user_alias-${title}":
+  file { "${sudo::dir}/etc/sudoers.d/00-user_alias-${title}":
     ensure  => $ensure,
     owner   => 'root',
     group   => 0,

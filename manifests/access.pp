@@ -7,7 +7,7 @@ define sudo::access (
     $real_user = $name
   }
   # there shouldn't be a dot in those filenames!
-  file { "${sudo::sudoersdir}/01-user_access-${title}":
+  file { "${sudo::dir}/01-user_access-${title}":
     ensure  => 'present',
     owner   => 'root',
     group   => 0,
