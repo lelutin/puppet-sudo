@@ -4,6 +4,7 @@
 
 class sudo(
   $deploy_sudoers = $sudo::deploy_sudoers,
+  $path = $sudo::params::path,
   $dir = $sudo::params::dir
 ) inherits sudo::params {
   case $::kernel {
