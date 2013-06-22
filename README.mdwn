@@ -1,0 +1,40 @@
+sudo support in puppet
+======================
+
+To simply install sudo on your servers, use:
+
+    include sudo
+
+By default, this will not deploy any sudoers file. Use the following
+to make sure a sudoers file is deployed:
+
+    class { 'sudo': deploy_sudoers => TRUE }
+
+This will deploy the default sudoers file shipped with the module or
+one shipped in your `site_sudo` module, see `manifests/init.pp` for
+the search path.
+
+You can also use defines to grant specific access. For example, to
+give access to a user:
+
+    sudo::access { 'foo': }
+
+This will create a file in `/etc/sudoers.d/01_user_access-foo` with a
+content:
+
+    foo ALL=(ALL) ALL
+
+You can change parameters, for example a no password access:
+
+    sudo::access { 'foo':
+        user => 'bar',
+        access => 'ALL = NOPASSWD: ALL'
+    }
+
+You can also create user aliases with:
+
+    sudo::user_alias { 'GROUP': members => 'foo, bar' }
+
+.. which in turn can be used in `sudo::access`:
+
+    sudo::access { 'GROUP-access': user => 'GROUP' }
