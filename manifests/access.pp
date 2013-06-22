@@ -6,6 +6,8 @@ define sudo::access (
   include sudo
   if $user == undef {
     $real_user = $name
+  } else {
+    $real_user = $user
   }
   # there shouldn't be a dot in those filenames!
   file { "${sudo::dir}/01-user_access-${title}":
