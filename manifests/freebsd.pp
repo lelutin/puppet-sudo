@@ -1,6 +1,4 @@
 class sudo::freebsd inherits sudo::base {
-
-    class { 'sudo': dir => '/usr/local/etc/sudoers.d' }
     package{'sudo':
         ensure => installed,
     }

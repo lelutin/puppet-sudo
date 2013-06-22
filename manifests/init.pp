@@ -3,9 +3,9 @@
 # GPLv3
 
 class sudo(
-  $deploy_sudoers = false,
-  $dir = '/etc/sudoers.d'
-) {
+  $deploy_sudoers = $sudo::deploy_sudoers,
+  $dir = $sudo::params::dir
+) inherits sudo::params {
   case $::kernel {
     linux: { include sudo::linux }
     freebsd: { include sudo::freebsd }
