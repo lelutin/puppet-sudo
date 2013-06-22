@@ -3,6 +3,7 @@ define sudo::access (
   $user = undef,
   $access = 'ALL=(ALL) ALL'
 ) {
+  include sudo
   if $user == undef {
     $real_user = $name
   }
