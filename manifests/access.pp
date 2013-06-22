@@ -4,7 +4,7 @@ define sudo::access (
   $access = 'ALL=(ALL) ALL'
 ) {
   if $user == undef {
-    $user = $name
+    $real_user = $name
   }
   # there shouldn't be a dot in those filenames!
   file { "${sudo::sudoersdir}/01-user_access-${title}":
@@ -12,6 +12,6 @@ define sudo::access (
     owner   => 'root',
     group   => 0,
     mode    => '0440',
-    content => "# THIS FILE IS MANAGED BY PUPPET !\n${user}        ${access}\n",
+    content => "# THIS FILE IS MANAGED BY PUPPET !\n${real_user}        ${access}\n",
   }
 }
