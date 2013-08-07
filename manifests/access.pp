@@ -11,7 +11,7 @@ define sudo::access (
   }
   # there shouldn't be a dot in those filenames!
   file { "${sudo::dir}/01-user_access-${title}":
-    ensure  => 'present',
+    ensure  => $ensure,
     owner   => 'root',
     group   => 0,
     mode    => '0440',
